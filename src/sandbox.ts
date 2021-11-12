@@ -1,37 +1,23 @@
-let greet: Function;
+let greet:(a: string, b: string) => void;
 
-// greet = "mamad";
+greet = (name: string, greeting: string) => {
+    console.log(`${name} says ${greeting}`);
+}
 
-greet = () => {
-  console.log("hello world");
-};
+let calc: (a: number, b: number, c: string) => number;
 
-const add = (a: number, b: number, c: number | string = 10): void => {
-  console.log(a + b);
-  console.log(c);
-};
+calc = (numberOne: number, numberTwo: number, action: string) => {
+    if (action === 'add') {
+        return numberOne + numberTwo;
+    } else {
+        return numberOne - numberTwo;
+    }
+}
 
-add(43, 10, 856);
+type person = {name: string, age: number};
 
-const minus = (a: number, b: number): number => {
-  return a + b;
-};
+let logDetails: (obj: person) => void;
 
-let result = minus(10, 7);
-// result = "a";
-
-type StringOrNum = string | number;
-
-type objWithName = { name: string, uid: StringOrNum}
-
-const logDetails = (uid: StringOrNum, item: string) => {
-  console.log(`${item} has a uid of ${uid}`);
-};
-
-const sayHello = (user: objWithName) => {
-  console.log(`${user.name} says hello`);
-};
-
-const sayHelloAgian = (user: objWithName) => {
-  console.log(`${user.name} says hello again`);
-};
+logDetails = (ninja: person) => {
+    console.log(`${ninja.name} is ${ninja.age} years old`);
+}
