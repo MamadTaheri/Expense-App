@@ -1,7 +1,8 @@
 var charachter = 'mamad';
-console.log(charachter);
-var inputs = document.querySelectorAll('input');
-console.log(inputs);
-inputs.forEach(function (input) {
-    console.log(input);
-});
+var age = 30;
+var isBlackeBelt = false;
+charachter = 'mt';
+var circ = function (diameter) {
+    return diameter * Math.PI;
+};
+console.log(circ(7.5));
