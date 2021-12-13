@@ -1,37 +1,29 @@
-let charachter: string;
-let age: number;
-let isLoggedIn: boolean;
+let age: any = 25;
 
-age = 51;
+age = true;
 
-let ninjas: string[] = [];
+age = "hello"
 
-ninjas.push('mamad');
+age = {
+    name: "luigi",
+}
 
-let mixed: (string|number|boolean)[] = [];
-mixed.push('mamad');
-mixed.push(20);
+console.log(age);
+
+let mixed: any[] = [];
+
+mixed.push('mario');
+
 mixed.push(false);
-console.log(mixed);
 
-let uid: string|number;
-uid = '123';
-uid = 123;
-
-let ninja1: object;
-ninja1 = {
-    name: 'mamad',
-    age: 30
+let ninja:{
+    name: any,
+    age: any
 }
 
-let ninja2: {
-    name: string,
-    age: number,
-    beltColor: string
+ninja = {
+    name: 'youshi',
+    age: 25
 }
 
-ninja2 = {
-    name: 'mamad',
-    age: 20,
-    beltColor: 'black'
-}
+ninja.name = false;
