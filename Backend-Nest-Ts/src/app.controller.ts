@@ -1,17 +1,62 @@
-import { Controller, Get } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Param,
+  Body,
+  HttpCode,
+} from '@nestjs/common';
 import { AppService } from './app.service';
+import { data, ReportType } from 'src/data';
 
-@Controller("report/income")
+@Controller('report/:type')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  // @Get()
-  // getHello(): string {
-  //   return this.appService.getHello();
-  // }
-
   @Get()
-  getAllIncomeReports(): any {
-    return { name: 'mamad', code: 12431 };
+  getAllReports(@Param('type') type: string) {
+    const reportType =
+      type === 'income' ? ReportType.INCOME : ReportType.EXPENSE;
+
+    return this.appService.getAllReports(reportType);
+  }
+
+  @Get(':id')
+  getReportById(@Param('type') type: string, @Param('id') id: string) {
+    const reportType =
+      type === 'income' ? ReportType.INCOME : ReportType.EXPENSE;
+
+    return this.appService.getReportById(reportType, id);
+  }
+
+  @Post()
+  createReport(
+    @Body() { amount, source }: { amount: number; source: string },
+    @Param('type') type: string,
+  ) {
+    const reportType =
+      type === 'income' ? ReportType.INCOME : ReportType.EXPENSE;
+
+    return this.appService.createReport(reportType, { amount, source });
+  }
+
+  @Put(':id')
+  updateReport(
+    @Param('type') type: string,
+    @Param('id') id: string,
+    @Body() body: { amount: number; source: string },
+  ) {
+    const reportType =
+      type === 'income' ? ReportType.INCOME : ReportType.EXPENSE;
+
+    return this.appService.updateReport(reportType, id, body);
+  }
+
+  @HttpCode(204)
+  @Delete(':id')
+  deleteReport(@Param('id') id: string) {
+    return this.appService.deleteReport(id);
   }
 }
