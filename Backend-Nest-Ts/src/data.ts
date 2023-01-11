@@ -15,14 +15,6 @@ export const data: Data = {
     },
     {
       id: 'uuid2',
-      source: 'Youtube',
-      amount: 2500,
-      created_at: new Date(),
-      updated_at: new Date(),
-      type: ReportType.INCOME,
-    },
-    {
-      id: 'uuid3',
       source: 'Food',
       amount: 500,
       created_at: new Date(),
